@@ -4,6 +4,7 @@
 1.美国风能和太阳能发电量，从1983年开始的每年每月实时更新数据来源网站
 This dataset, provided by the U.S. Energy Information Administration (EIA) in the Electric Power Monthly report, contains monthly data on wind energy production and other renewables in the United States.
 https://www.eia.gov/totalenergy/data/browser/?tbl=T10.01#/?f=A&start=1949&end=2023&charted=6-7-8-9-14
+https://www.eia.gov/electricity/monthly/
 
 2.美国平均电价，从1978年11月开始，每年每月实时更新数据来源网站
 美国劳工统计局：美国各地区、各人口普查区域和选定大都市地区的平均能源价格
