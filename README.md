@@ -96,25 +96,3 @@ $$\text{Minimize} \quad \sum_{t \in T} \text{Price}_t \times (\text{EnergyBought
 
 9. **Discharge Binary Constraint**:
    $$\frac{\text{DischargeR}(t)}{\text{MaxChargeDischargeRate}} \leq 1 - \text{ChargeBinary}(t) \quad \text{for all } t \in \{0, 1, \dots, 281\}$$
-
-## How to Use
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/buckyball99/Microgrid-Energy-Optimization.git
-    cd Microgrid-Energy-Optimization
-    ```
-
-2. Install the necessary dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3. Run the optimization model
-
-4. Analyze the results:
-    The results will be saved as output files, and relevant plots will be generated to visualize the energy flow, costs, and renewable energy utilization.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
