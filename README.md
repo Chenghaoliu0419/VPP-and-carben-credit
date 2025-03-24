@@ -33,16 +33,16 @@ The model optimizes the energy flow in a microgrid system consisting of renewabl
 
 4. **Battery Constraints**:
    - The maximum charging and discharging rate is 250 kwh, considered before efficiency losses.
-   - The battery has a minimum charge state of 100 kWh and a maximum charge state of 950 kWh.
+   - The battery has a minimum charge state of 200 kWh and a maximum charge state of 1900 kWh.
 
 ## Model Parameters
 
-- **T**: Set of time indices from \( 0 \) to \( 11 \).
-- **Max\_Cap**: Maximum capacity of the battery = \( 1000  kWh \).
+- **T**: Set of time indices from \( 0 \) to \( 281 \).
+- **Max\_Cap**: Maximum capacity of the battery = \( 2000  kWh \).
 - **Charge\_Eff**: Charging efficiency of the battery = \( 0.95 \).
 - **Discharge\_Eff**: Discharging efficiency of the battery = \( 0.95 \).
-- **Min\_C\_State**: Minimum charge the battery can hold = \( 100 kWh \).
-- **Max\_C\_State**: Maximum charge the battery can hold = \( 950  kWh \).
+- **Min\_C\_State**: Minimum charge the battery can hold = \( 200 kWh \).
+- **Max\_C\_State**: Maximum charge the battery can hold = \( 1900  kWh \).
 - **Max\_Charge\_Discharge\_Rate**: Maximum energy that can be charged or discharged = \( 250  kWh \).
 - **Price**: The price matrix for energy bought or sold at each time index.
 - **Demand**: Customer demand at each time index.
@@ -71,31 +71,31 @@ $$\text{Minimize} \quad \sum_{t \in T} \text{Price}_t \times (\text{EnergyBought
 ## Model Constraints
 
 1. **Battery Constraint**:
-   $$\text{BState}(t) = \text{BState}(t-1) + \text{ChargeEff} \times \text{ChargeR}(t) - \frac{\text{DischargeR}(t)}{\text{DischargeEff}} \quad \text{for all } t \in \{0, 1, \dots, 11\}$$
+   $$\text{BState}(t) = \text{BState}(t-1) + \text{ChargeEff} \times \text{ChargeR}(t) - \frac{\text{DischargeR}(t)}{\text{DischargeEff}} \quad \text{for all } t \in \{0, 1, \dots, 281\}$$
 
 2. **Minimum Battery State**:
-   $$\text{BState}(t) \geq \text{MinCState} \quad \text{for all } t \in \{0, 1, \dots, 11\}$$
+   $$\text{BState}(t) \geq \text{MinCState} \quad \text{for all } t \in \{0, 1, \dots, 281\}$$
 
 3. **Maximum Battery State**:
-   $$\text{BState}(t) \leq \text{MaxCState} \quad \text{for all } t \in \{0, 1, \dots, 11\}$$
+   $$\text{BState}(t) \leq \text{MaxCState} \quad \text{for all } t \in \{0, 1, \dots, 281\}$$
 
 4. **Grid Import Constraint**:
-   $$\text{GridI}(t) = \text{ChargeR}(t) + \text{RelativeFlow}(t) \quad \text{for all } t \in \{0, 1, \dots, 11\}$$
+   $$\text{GridI}(t) = \text{ChargeR}(t) + \text{RelativeFlow}(t) \quad \text{for all } t \in \{0, 1, \dots, 281\}$$
 
 5. **Grid Export Constraint**:
-   $$\text{GridE}(t) = \text{DischargeR}(t) + \text{RelativeFlow}(t) \quad \text{for all } t \in \{0, 1, \dots, 11\}$$
+   $$\text{GridE}(t) = \text{DischargeR}(t) + \text{RelativeFlow}(t) \quad \text{for all } t \in \{0, 1, \dots, 281\}$$
 
 6. **Source Energy Constraint**:
-   $$\text{GridI}(t) \leq \text{SolarGen}(t) + \text{WindGen}(t) + \text{EnergyBought}(t) \quad \text{for all } t \in \{0, 1, \dots, 11\}$$
+   $$\text{GridI}(t) \leq \text{SolarGen}(t) + \text{WindGen}(t) + \text{EnergyBought}(t) \quad \text{for all } t \in \{0, 1, \dots, 281\}$$
 
 7. **Customer Demand Constraint**:
-   $$\text{GridE}(t) = \text{Demand}(t) \quad \text{for all } t \in \{0, 1, \dots, 11\}$$
+   $$\text{GridE}(t) = \text{Demand}(t) \quad \text{for all } t \in \{0, 1, \dots, 281\}$$
 
 8. **Charge Binary Constraint**:
-   $$\frac{\text{ChargeR}(t)}{\text{MaxChargeDischargeRate}} \leq \text{ChargeBinary}(t) \quad \text{for all } t \in \{0, 1, \dots, 11\}$$
+   $$\frac{\text{ChargeR}(t)}{\text{MaxChargeDischargeRate}} \leq \text{ChargeBinary}(t) \quad \text{for all } t \in \{0, 1, \dots, 281\}$$
 
 9. **Discharge Binary Constraint**:
-   $$\frac{\text{DischargeR}(t)}{\text{MaxChargeDischargeRate}} \leq 1 - \text{ChargeBinary}(t) \quad \text{for all } t \in \{0, 1, \dots, 11\}$$
+   $$\frac{\text{DischargeR}(t)}{\text{MaxChargeDischargeRate}} \leq 1 - \text{ChargeBinary}(t) \quad \text{for all } t \in \{0, 1, \dots, 281\}$$
 
 ## How to Use
 
